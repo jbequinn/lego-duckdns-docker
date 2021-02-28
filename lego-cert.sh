@@ -11,7 +11,7 @@ echo_timestamp() {
 }
 
 run_lego() {
-  /app/lego \
+  /usr/bin/lego \
     --accept-tos \
     --server=${SERVER} \
     --key-type ec384 \
