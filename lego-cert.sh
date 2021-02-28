@@ -24,17 +24,21 @@ run_lego() {
 }
 
 copy_certificates() {
-  echo_timestamp "Copying certificates to /data/generic_name_certs"
-  mkdir -p /data/generic_name_certs
-  cp /data/certificates/${DOMAIN}.crt /data/generic_name_certs/certificate.crt
-  cp /data/certificates/${DOMAIN}.key /data/generic_name_certs/certificate.key
+  echo_timestamp "Copying certificates to /certs"
+  cp /data/certificates/${DOMAIN}.crt /certs/certificate.crt
+  cp /data/certificates/${DOMAIN}.key /certs/certificate.key
   echo_timestamp "Copying done."
 }
 
 echo_timestamp "Starting process."
 
 if [ ! -d "/data" ]; then
-  echo_timestamp "No data directory found! Exiting."
+  echo_timestamp "Directory /data not found! Exiting."
+  exit 1
+fi
+
+if [ ! -d "/certs" ]; then
+  echo_timestamp "Directory /certs not found! Exiting."
   exit 1
 fi
 
