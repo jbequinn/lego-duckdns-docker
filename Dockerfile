@@ -6,4 +6,4 @@ RUN apk add --no-cache lego openssl tini
 COPY lego-cert /etc/periodic/daily/
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["/usr/sbin/crond", "-f"]
+CMD ["crond", "-f", "-l", "2"]
